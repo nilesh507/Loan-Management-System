@@ -1,0 +1,17 @@
+node_modules/
+.next/
+dist/
+build/
+coverage/
+test-results/
+playwright-report/
+.env
+.env.*
+!.env.example
+apps/api/storage/*
+!apps/api/storage/.gitkeep
+*.log
+.DS_Store
+*.tsbuildinfo
+.idea/
+.vscode/

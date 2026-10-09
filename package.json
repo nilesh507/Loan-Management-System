@@ -1,0 +1,31 @@
+{
+  "name": "creditsea-lms",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -k \"npm run dev -w @creditsea/api\" \"npm run dev -w @creditsea/web\"",
+    "start": "concurrently -k \"npm run start -w @creditsea/api\" \"npm run start -w @creditsea/web\"",
+    "build": "npm run build -w @creditsea/shared && npm run build -w @creditsea/api && npm run build -w @creditsea/web",
+    "typecheck": "npm run typecheck -ws --if-present",
+    "lint": "npm run lint:api && npm run lint -w @creditsea/web",
+    "test": "npm run test -w @creditsea/api",
+    "seed": "npm run seed -w @creditsea/api",
+    "test:e2e": "playwright test",
+    "postinstall": "npm run build -w @creditsea/shared",
+    "lint:api": "eslint apps/api/src packages/shared/src e2e playwright.config.ts"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.0",
+    "concurrently": "^9.2.1",
+    "eslint": "^9.39.5",
+    "prettier": "^3.9.9",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.71.1"
+  },
+  "engines": {
+    "node": "^22.13.0 || >=24.0.0"
+  }
+}
