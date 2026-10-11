@@ -8,7 +8,10 @@ import {
 } from "react";
 import { Role } from "@creditsea/shared";
 export const API =
-  process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000/api/v1";
+  process.env.NEXT_PUBLIC_API_URL ||
+  (process.env.NODE_ENV === "production"
+    ? "/api/v1"
+    : "http://localhost:4000/api/v1");
 export type User = { id: string; fullName: string; email: string; role: Role };
 type Context = {
   user: User | null;
